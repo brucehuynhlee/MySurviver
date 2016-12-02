@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int startingHealth = 100;
-    public int currentHealth;
+    public float startingHealth = 100;
+    public float currentHealth;
     public float sinkSpeed = 2.5f;
     public int scoreValue = 10;
     public AudioClip deathClip;
@@ -17,6 +18,8 @@ public class EnemyHealth : MonoBehaviour
     bool isSinking;
 
 
+	Vector3 posHealthBar ;
+	GameObject healthBar ;
     void Awake ()
     {
         anim = GetComponent <Animator> ();
@@ -25,8 +28,18 @@ public class EnemyHealth : MonoBehaviour
         capsuleCollider = GetComponent <CapsuleCollider> ();
 
         currentHealth = startingHealth;
+
+		GameObject game = this.gameObject.transform.GetChild (2).gameObject;
+		healthBar = game.transform.GetChild (1).gameObject;
+		posHealthBar = healthBar.transform.localScale;
     }
 
+	void setHealthBar(float currentPosX){
+		// set scale x
+		posHealthBar.x = currentPosX;
+		// set current bar
+		healthBar.transform.localScale = posHealthBar;
+	}
 
     void Update ()
     {
@@ -45,6 +58,7 @@ public class EnemyHealth : MonoBehaviour
         enemyAudio.Play ();
 
         currentHealth -= amount;
+		setHealthBar (currentHealth / startingHealth);
             
         hitParticles.transform.position = hitPoint;
 		hitParticles.Play();
@@ -75,6 +89,7 @@ public class EnemyHealth : MonoBehaviour
         GetComponent <Rigidbody> ().isKinematic = true;
         isSinking = true;
         ScoreManager.score += scoreValue;
+		Destroy (healthBar,2f);
         Destroy (gameObject, 2f);
     }
 }

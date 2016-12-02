@@ -45,7 +45,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\_CompletedAssets\MobileInput\Scripts\Editor\CrossPlatformInputInitialize.cs" />
      <Compile Include="Assets\_CompletedAssets\SampleAssets\Effects\ImageEffects\Editor\ColorCorrectionCurvesEditor.cs" />
      <Compile Include="Assets\_CompletedAssets\SampleAssets\Effects\ImageEffects\Editor\VignetteAndChromaticAberrationEditor.cs" />
      <None Include="Assets\_CompletedAssets\SampleAssets\Effects\ImageEffects\Shaders\ColorCorrectionCurves.shader" />
@@ -97,6 +96,8 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{F1A10738-C36A-F4F0-A228-CC7579D04046}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{819A2121-54A8-AC9A-10BE-3B45E42C0B6D}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>

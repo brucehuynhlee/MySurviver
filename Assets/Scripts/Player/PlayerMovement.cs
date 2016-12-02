@@ -47,7 +47,6 @@ public class PlayerMovement : MonoBehaviour
 		{
 			Vector3 playerTomouse = floorHit.point - transform.position;
 			playerTomouse.y = 0f ;
-
 			Quaternion newRotation = Quaternion.LookRotation(playerTomouse);
 			playerRigitbody.MoveRotation (newRotation);
 		}
